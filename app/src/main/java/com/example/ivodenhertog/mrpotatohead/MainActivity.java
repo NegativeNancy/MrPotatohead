@@ -1,3 +1,9 @@
+// MainActivity.java
+//
+// Ivo den Hertog
+//
+// This file handles the logic of displaying to correct view.
+
 package com.example.ivodenhertog.mrpotatohead;
 
 import android.support.v7.app.AppCompatActivity;
@@ -16,16 +22,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void checkClicked(View v) {
         CheckBox checkbox = (CheckBox) v;
+        // Get name of checkbox.
         String checkName = checkbox.getText().toString();
+        // Use name of checkbox to find the correct image id.
         int imageId = getResources().getIdentifier(checkName, "id", getPackageName());
+        // Use imageId to change visibility of the ImageView based on checkbox state.
+        ImageView image = findViewById(imageId);
         if (checkbox.isChecked()){
-            ImageView image = findViewById(imageId);
-            if (image.getVisibility() == View.INVISIBLE) {
-                image.setVisibility(View.VISIBLE);
-            }
+            image.setVisibility(View.VISIBLE);
         }
         else {
-            ImageView image = findViewById(imageId);
             image.setVisibility(View.INVISIBLE);
         }
     }
